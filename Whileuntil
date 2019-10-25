@@ -1,0 +1,29 @@
+#!/bin/bash
+
+#Escriba el nombre de la carpeta que desea crear
+echo "Escriba el nombre de la carpeta que desea crear $carpeta"
+read carpeta
+
+#Verificar si la carpeta existe
+
+for dir in $@
+do
+  if [ -d $dir ]
+  then
+
+#Si la carpeta ya existe da error
+    echo “La capeta $dir ya existe.”
+Else
+
+#Si la carpeta no existe, lo crea
+    mkdir $dir
+    if [ $? -eq 0 ]
+    then
+      
+#Si la carpeta de creó bien mostrar "La carpeta se creó exitosamente" y salir
+	echo “ la carpeta $dir se creó exitosamente”
+    else
+      echo “Ups! Algo ha fallado al crear $dir”
+    fi
+  fi
+done
